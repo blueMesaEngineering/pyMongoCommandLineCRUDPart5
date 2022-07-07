@@ -84,17 +84,29 @@ def readPost(posts):
   readChoice = input("\nEnter a selection: ")
   while readChoice != "4":
     if readChoice == "1":
-      authorFirstName = input("Enter author first name: ")        # To do: validate input here.
+      authorFirstName = input("Enter author first name: ")
+      result = validate(authorFirstName, "name")
+      if result == "false":
+        print("Error occurred. Read Post not successful!")
+        return
       cursor = posts.find({"author first name": authorFirstName})
       readPostDisplayResults(cursor, "read")
       break
     elif readChoice == "2":
-      authorLastName = input("Enter author last name: ")          # To do: validate input here.
+      authorLastName = input("Enter author last name: ")
+      result = validate(authorLastName, "name")
+      if result == "false":
+        print("Error occurred. Read Post not successful!")
+        return
       cursor = posts.find({"author last name": authorLastName})
       readPostDisplayResults(cursor, "read")
       break
     elif readChoice == "3":
-      postTitle = input("Enter post title: ")                     # To do: validate input here.
+      postTitle = input("Enter post title: ")
+      result = validate(postTitle, "title")
+      if result == "false":
+        print("Error occurred. Read Post not successful!")
+        return
       cursor = posts.find({"title": postTitle})
       readPostDisplayResults(cursor, "read")
       break
@@ -200,17 +212,29 @@ def updatePost(posts):
   updateChoice = input("\nEnter a selection: ")
   while updateChoice != "4":
     if updateChoice == "1":
-      authorFirstName = input("Enter author first name: ")        # To do: validate input here.
+      authorFirstName = input("Enter author first name: ")
+      result = validate(authorFirstName, "name")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       cursor = posts.find({"author first name": authorFirstName})
       readPostDisplayResults(cursor, "update")
       break
     elif updateChoice == "2":
-      authorLastName = input("Enter author last name: ")          # To do: validate input here.
+      authorLastName = input("Enter author last name: ")
+      result = validate(authorLastName, "name")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       cursor = posts.find({"author last name": authorLastName})
       readPostDisplayResults(cursor, "update")
       break
     elif updateChoice == "3":
-      postTitle = input("Enter post title: ")                     # To do: validate input here.
+      postTitle = input("Enter post title: ")
+      result = validate(postTitle, "title")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       cursor = posts.find({"title": postTitle})
       readPostDisplayResults(cursor, "update")
       break
@@ -263,22 +287,38 @@ def updatePostByID(posts, post_id):
   selection = input("\nEnter a selection: ")
   while selection != "5":
     if selection == "1":
-      authorFirstName = input("Enter new author first name: ")    # To do: validate input here.
+      authorFirstName = input("Enter new author first name: ")
+      result = validate(authorFirstName, "name")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       posts.update_one({"_id": post_id}, { "$set": {"author first name": authorFirstName}})
       printUpdatedPostByID(posts, post_id)
       break
     elif selection == "2":
-      authorLastName = input("Enter new author last name: ")      # To do: validate input here.
+      authorLastName = input("Enter new author last name: ")
+      result = validate(authorLastName, "name")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       posts.update_one({"_id": post_id}, { "$set": {"author last name": authorLastName}})
       printUpdatedPostByID(posts, post_id)
       break
     elif selection == "3":
-      postTitle = input("Enter new post title: ")                 # To do: validate input here.
+      postTitle = input("Enter new post title: ")
+      result = validate(postTitle, "title")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       posts.update_one({"_id": post_id}, { "$set": {"title": postTitle}})
       printUpdatedPostByID(posts, post_id)
       break
     elif selection == "4":
-      postBody = input("Enter new post body: ")                   # To do: validate input here.
+      postBody = input("Enter new post body: ")
+      result = validate(postBody, "body")
+      if result == "false":
+        print("Error occurred. Update Post not successful!")
+        return
       posts.update_one({"_id": post_id}, { "$set": {"text": postBody}})
       printUpdatedPostByID(posts, post_id)
       break
@@ -331,17 +371,29 @@ def deletePost(posts):
   deleteChoice = input("\nEnter a selection: ")
   while deleteChoice != "4":
     if deleteChoice == "1":
-      authorFirstName = input("Enter author first name: ")        # To do: validate input here.
+      authorFirstName = input("Enter author first name: ")
+      result = validate(authorFirstName, "name")
+      if result == "false":
+        print("Error occurred. Delete Post not successful!")
+        return
       cursor = posts.find({"author first name": authorFirstName})
       readPostDisplayResults(cursor, "delete")
       break
     elif deleteChoice == "2":
-      authorLastName = input("Enter author last name: ")          # To do: validate input here.
+      authorLastName = input("Enter author last name: ")
+      result = validate(authorLastName, "name")
+      if result == "false":
+        print("Error occurred. Delete Post not successful!")
+        return
       cursor = posts.find({"author last name": authorLastName})
       readPostDisplayResults(cursor, "delete")
       break
     elif deleteChoice == "3":
-      postTitle = input("Enter post title: ")                     # To do: validate input here.
+      postTitle = input("Enter post title: ")
+      result = validate(postTitle, "title")
+      if result == "false":
+        print("Error occurred. Delete Post not successful!")
+        return
       cursor = posts.find({"title": postTitle})
       readPostDisplayResults(cursor, "delete")
       break
